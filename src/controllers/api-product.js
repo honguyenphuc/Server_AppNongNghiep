@@ -16,6 +16,7 @@ class APIProduct{
             res.status(404).json({message: err.message});
         }
     }
+   
     async detail(req,res){
         const id = req.params.id;
         try {
@@ -31,7 +32,7 @@ class APIProduct{
         try {
             const data =  await Product.create(product);
             await data.save();
-            res.status(200).json({message:"Thêm sản phẩm thành công"});
+            res.status(200).json(data);
         } catch (err) {
             res.status(404).json({message: err.message});
         }

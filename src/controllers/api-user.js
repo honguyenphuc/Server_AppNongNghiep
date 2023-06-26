@@ -10,6 +10,7 @@ class APIUser{
             name: req.body.name,
             email: req.body.email,
             password: bcrypt.hashSync(req.body.password,10),
+            repeatPassword: bcrypt.hashSync(req.body.password,10),
         });
         console.log(newUser);
         if(newUser.name ==="" ||newUser.email===""){
@@ -77,6 +78,5 @@ class APIUser{
         next();
       });
     }
-
 }
 module.exports = new APIUser;

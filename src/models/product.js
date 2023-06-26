@@ -6,6 +6,7 @@ const productSchema = mongoose.Schema({
     mota: {type: String,require: true},
     hinhanh: {type: String,require: true},
     gia:{type: String,require: true},
+    tonggia:{type: String,require: true},
     thuonghieu:{type: String, require: true},
     category:{type: String, require: true},
     xuatxu: {type: String,require: true},

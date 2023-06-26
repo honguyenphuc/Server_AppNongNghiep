@@ -8,7 +8,7 @@ const category = require("../controllers/api-category");
 const search = require("../controllers/api-search")
 const delivery = require("../controllers/api-delivery")
 
-router.get("/",user.authenticateToken,product.show);
+router.get("/",product.show);
 router.get("/danhmuc",category.showcategory);
 router.get("/search",search.searchProduct);
 
