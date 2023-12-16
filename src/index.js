@@ -1,20 +1,25 @@
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-const db = require('./config/db');
+const express = require("express");
+const mongoose = require("mongoose");
+const cors = require("cors");
+const db = require("./config/db/index");
 const app = express();
-const server = require('http').createServer(app);
-const io = require('socket.io')(server);
-const routes = require("./routes/routes")
+
+const server = require("http").createServer(app);
+const notificationRouter = require("./routes/notifications");
+const routes = require("./routes/routers");
+
 const port = process.env.PORT || 3001;
-app.use(cors())
+
+app.use(cors());
 app.use(express.json());
-app.use(express.urlencoded({extended: true}));
+app.use(express.urlencoded({ extended: true }));
+
+app.use("/notification", notificationRouter);
+
+app.use("/api", routes);
+
 db.connect();
 
-
-app.use("/api",routes);
-
-app.listen(port, () => {
-    console.log(`Server Started at ${port}`)
-})
+app.listen(port, function () {
+  console.log(`Server Started at ${port}`);
+});
